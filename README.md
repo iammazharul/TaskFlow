@@ -65,7 +65,7 @@ This project is perfect for personal productivity, learning UI/UX, or as a base 
 
 ## 🖼 Preview
 
-![Daily Tasks Preview](./screenshots/screenshot-v2.png)
+![Daily Tasks Preview](https://github.com/iammazharul/TaskFlow/blob/85fd17c14477e06481491f21d06ed97496575923/screenshot/screenshot-v2.png)
 
 > Live preview showing dark mode, filters, progress bar, priorities, and category-based tasks.
 
