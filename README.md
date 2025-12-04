@@ -1,83 +1,93 @@
-# ✅ TaskFlow – Official Task Management System
+Got it — your app has evolved a lot (minimal Japanese-style UI, keyboard-driven, progress tracking). Here is a **fully updated, accurate `README.md`** that matches your **current code exactly**.
 
-TaskFlow is a modern, lightweight, and fully client-side **task management system** built with **HTML, Tailwind CSS, jQuery, and LocalStorage**. It is designed for daily productivity tracking with powerful filtering, priority management, dark mode, printing, and real-time progress tracking.
+You can **replace your existing README.md بالكامل with this**:
+
+---
+
+```md
+# ✅ Tasks – Minimal Daily Task Manager
+
+**Tasks** is a clean, minimalist, and keyboard-driven daily task manager built with  
+**HTML, Tailwind CSS, jQuery, and LocalStorage**.  
+It focuses on **speed, simplicity, and distraction-free productivity** with a Japanese-inspired aesthetic.
 
 ---
 
 ## 🖼 Preview
 
-![TaskFlow Preview](https://github.com/iammazharul/TaskFlow/blob/2bedf8fc9765fd712774aa2d9cb82796ebf23d4d/screenshot/screenshot-v3.png)
+![Tasks Preview](./screenshots/screenshot-v2.png)
 
-> Live preview showcasing dark mode, filtering, priorities, progress tracking, and task registry.
+> Shows progress bar, live stats, filters, search, dark mode, and keyboard navigation.
 
 ---
 
 ## 🚀 Features
 
 ### ✅ Core Task Management
-- Add, edit, delete, and complete tasks
-- Instant task saving with LocalStorage
-- Inline task editing
-- Task timestamps and creation date
+- Add new tasks instantly
+- Mark tasks as completed
+- Delete tasks with one click
+- Inline task editing using keyboard (Enter)
+- Tasks saved automatically using `localStorage`
 
-### 🎯 Priority & Categories
-- Priority levels: **Low, Medium, High**
-- Categories: **Work, Personal, Health, Other**
-- Priority color indicators & icons
+### 📊 Live Progress Tracking
+- Animated **progress bar**
+- Real-time **completion percentage**
+- Automatic update on every action
 
-### 🔍 Smart Filters & Search
+### 📈 Smart Statistics
+- **Total Tasks**
+- **Completed Tasks**
+- **Pending Tasks**
+
+### 🔍 Filtering & Search
 - Filter by:
-  - All Tasks
-  - Active Tasks
-  - Completed Tasks
-  - High Priority
-- Category-based filtering
-- Live search by task name
-
-### 📊 Productivity Dashboard
-- Total tasks counter
-- Completed tasks counter
-- Pending tasks counter
-- High-priority task counter
-- Automatic daily progress bar calculation
+  - All
+  - Active
+  - Completed
+- Real-time task search
+- Empty state handling
 
 ### 🌙 Dark Mode
-- One-click dark mode toggle
-- Theme preference saved in browser
+- Toggle using keyboard shortcut
+- Preference saved in browser
 
-### 🖨 Print Support
-- Print-friendly layout
-- Clean printable task report
-- Automatically hides UI controls on print
+### ⌨ Full Keyboard Control
 
-### ⚡ UI Enhancements
-- Smooth animations
-- Loading indicator while adding tasks
-- Task delete fade-out animation
-- Focus pulse animation for active input
-
-### ⌨ Keyboard Shortcuts
 | Shortcut | Action |
 |----------|--------|
-| `Alt + N` | New Task |
-| `Alt + F` | Search |
-| `Alt + D` | Toggle Dark Mode |
+| `Alt + N` | Focus new task input |
+| `Alt + F` | Focus search |
+| `Alt + A` | Show all tasks |
+| `Alt + D` | Toggle dark mode |
+| `Alt + C` | Clear completed tasks |
+| `↑ / ↓` | Navigate tasks |
+| `Space` | Toggle selected task |
+| `Delete` | Delete selected task |
+| `Enter` | Edit selected task |
+| `Esc` | Clear search / Close modal |
+| `?` | Open shortcuts help |
 
-### 🧠 Smart Sorting
-- Sort by:
-  - Created Time
-  - Priority
-  - Task Time
+### 🖥 UI & UX Enhancements
+- Smooth fade-in animations
+- Hover-based delete button visibility
+- Subtle shadows & transitions
+- Japanese-inspired minimalist design
+- Fully responsive layout
+- Focus ring accessibility
+
+### 🔐 Security
+- Built-in **HTML escaping** to prevent XSS attacks
 
 ---
 
 ## 🛠 Tech Stack
 
-- **HTML5**
-- **Tailwind CSS**
-- **jQuery 3.7.1**
-- **Font Awesome 6.4**
-- **LocalStorage API**
+- **HTML5** – Structure
+- **Tailwind CSS** – UI styling
+- **jQuery 3.7.1** – Interactions & state handling
+- **Font Awesome 6.4** – Icons
+- **LocalStorage API** – Persistent storage
 
 ---
 
@@ -85,90 +95,85 @@ TaskFlow is a modern, lightweight, and fully client-side **task management syste
 
 ```
 
-/project-root
-│── index.html
-│── /screenshots
-│     └── screenshot-v2.png
-│── README.md
+/
+├── index.html
+├── README.md
+└── screenshots/
+└── screenshot-v2.png
 
 ````
 
 ---
 
-## 📦 Installation & Usage
+## ⚙️ Installation
 
-### 1️⃣ Clone Repository
+No backend. No database. No build tools.
+
+### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/your-username/taskflow.git
+git clone https://github.com/your-username/tasks.git
 ````
 
-### 2️⃣ Open the App
-
-Simply open `index.html` in your browser:
+### 2️⃣ Open the app
 
 ```bash
 open index.html
 ```
 
-✅ No server
-✅ No database
-✅ No installation required
+✅ Works offline
+✅ Fully client-side
+✅ Zero configuration required
 
 ---
 
 ## 💾 Data Storage
 
-All tasks are stored securely inside the browser using:
+All tasks are stored in the browser using:
 
-* `localStorage.getItem('dailyTasks')`
+* `localStorage.getItem('tasks')`
 * `localStorage.getItem('darkMode')`
 
-⚠️ Clearing browser storage will remove tasks.
+⚠️ Clearing browser storage will remove saved tasks.
 
 ---
 
 ## 📌 Version Info
 
 * **Version:** `1.0.0`
-* **Release Type:** Official Stable Release
+* **Release Type:** Stable
 * **License:** MIT
 
 ---
 
-## 🧩 Roadmap (Upcoming Features)
+## 🛣 Roadmap (Optional)
 
-* ✅ Task export to PDF
-* ✅ Multi-day task history
-* ✅ Cloud sync (Firebase optional)
-* ✅ User login system
-* ✅ Mobile app wrapper (Flutter / PWA)
+* 🔔 Task reminders & notifications
+* ☁ Cloud sync with login
+* 📄 Export tasks to PDF
+* 📱 PWA & Mobile App version
+* 👥 Shared task lists
 
 ---
 
 ## 👨‍💻 Author
 
-**TaskFlow Management System**
 Developed by **Mazharul Islam**
+Bangladesh 🇧🇩
 
 ---
 
-## ⭐ Support & Contribution
+## ⭐ Support
 
-If you like this project:
+If you find this useful:
 
-✅ Give it a star
-✅ Fork it
-✅ Improve it
+✅ Star the repo
 ✅ Share it
+✅ Fork & improve it
 
-Pull requests and feature requests are welcome!
+Pull requests are welcome!
 
 ---
 
 ## 📜 License
 
-This project is licensed under the **MIT License** – feel free to use it for commercial and personal projects.
-
-```
-
----
+This project is licensed under the **MIT License** – free for personal and commercial use.
