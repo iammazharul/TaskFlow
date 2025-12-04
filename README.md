@@ -6,7 +6,7 @@ TaskFlow is a modern, lightweight, and fully client-side **task management syste
 
 ## 🖼 Preview
 
-![TaskFlow Preview](./screenshots/screenshot-v2.png)
+![TaskFlow Preview](https://github.com/iammazharul/TaskFlow/blob/2bedf8fc9765fd712774aa2d9cb82796ebf23d4d/screenshot/screenshot-v3.png)
 
 > Live preview showcasing dark mode, filtering, priorities, progress tracking, and task registry.
 
@@ -171,14 +171,4 @@ This project is licensed under the **MIT License** – feel free to use it for c
 
 ```
 
----
 
-## ✅ If you want, I can also:
-- Generate a **GitHub Release Note**
-- Create a **PWA version**
-- Add a **login system**
-- Add **multi-user support**
-- Convert this into a **Flutter App**
-
-Just tell me your next goal for TaskFlow 🚀
-```
