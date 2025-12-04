@@ -8,7 +8,7 @@ It emphasizes **speed, simplicity, and distraction-free productivity** with a Ja
 
 ## 🖼 Preview
 
-![Tasks Preview](https://github.com/iammazharul/TaskFlow/blob/2ef47817a96b45e912c5ffa9e21d08498358003a/screenshot/screenshot-v4.png)
+![Tasks Preview](https://github.com/iammazharul/TaskFlow/blob/563f7ffb44668b4f7c27c829fb8be71e0db15d2c/screenshot/screenshot-v5.png)
 
 > Clean interface, progress bar, live stats, filters, search, dark mode, and full keyboard navigation.
 
