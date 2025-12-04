@@ -1,10 +1,3 @@
-Got it — your app has evolved a lot (minimal Japanese-style UI, keyboard-driven, progress tracking). Here is a **fully updated, accurate `README.md`** that matches your **current code exactly**.
-
-You can **replace your existing README.md بالكامل with this**:
-
----
-
-```md
 # ✅ Tasks – Minimal Daily Task Manager
 
 **Tasks** is a clean, minimalist, and keyboard-driven daily task manager built with  
@@ -15,7 +8,7 @@ It focuses on **speed, simplicity, and distraction-free productivity** with a Ja
 
 ## 🖼 Preview
 
-![Tasks Preview](./screenshots/screenshot-v2.png)
+![Tasks Preview](https://github.com/iammazharul/TaskFlow/blob/2ef47817a96b45e912c5ffa9e21d08498358003a/screenshot/screenshot-v4.png)
 
 > Shows progress bar, live stats, filters, search, dark mode, and keyboard navigation.
 
