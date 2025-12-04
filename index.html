@@ -6,6 +6,7 @@
     <title>Tasks</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&display=swap');
@@ -28,11 +29,23 @@
         .task-item {
             transition: all 0.2s ease;
             border: 1px solid transparent;
+            cursor: pointer;
+            user-select: none;
         }
         
         .task-item:hover {
             border-color: #e5e7eb;
             transform: translateX(2px);
+        }
+        
+        .task-item.dragging {
+            opacity: 0.5;
+            transform: rotate(2deg);
+        }
+        
+        .task-item.drag-over {
+            border-color: #3b82f6;
+            background-color: rgba(59, 130, 246, 0.05);
         }
         
         .checkbox-custom {
@@ -41,6 +54,7 @@
             cursor: pointer;
             position: relative;
             transition: all 0.2s ease;
+            pointer-events: none;
         }
         
         .checkbox-custom:checked {
@@ -88,6 +102,7 @@
         .delete-btn {
             opacity: 0;
             transition: opacity 0.2s ease;
+            pointer-events: auto;
         }
         
         .task-item:hover .delete-btn {
@@ -122,6 +137,11 @@
         
         .dark .task-item:hover {
             border-color: #404040;
+        }
+        
+        .dark .task-item.drag-over {
+            border-color: #60a5fa;
+            background-color: rgba(96, 165, 250, 0.1);
         }
         
         /* Perfect spacing */
@@ -183,30 +203,6 @@
         .task-selected {
             background-color: rgba(59, 130, 246, 0.05);
             border-color: #3b82f6;
-        }
-        
-        /* Help button */
-        .help-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #3b82f6;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 100;
-        }
-        
-        .help-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         
         /* Modal */
@@ -303,13 +299,88 @@
         .dark .shortcut-key {
             background-color: #4b5563;
         }
+        
+        /* Drag handle */
+        .drag-handle {
+            cursor: grab;
+            opacity: 0.3;
+            transition: opacity 0.2s ease;
+            padding: 8px;
+            margin: -8px;
+        }
+        
+        .task-item:hover .drag-handle {
+            opacity: 0.6;
+        }
+        
+        .drag-handle:active {
+            cursor: grabbing;
+        }
+        
+        /* Sortable ghost */
+        .sortable-ghost {
+            opacity: 0.4;
+        }
+        
+        .sortable-drag {
+            opacity: 0.5;
+        }
+        
+        /* Clickable area */
+        .clickable-area {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+        
+        /* Footer links */
+        .footer-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #9ca3af;
+            transition: color 0.2s ease;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        
+        .footer-link:hover {
+            color: #4b5563;
+            background-color: rgba(0, 0, 0, 0.03);
+        }
+        
+        .dark .footer-link {
+            color: #9ca3af;
+        }
+        
+        .dark .footer-link:hover {
+            color: #d1d5db;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-link i {
+            font-size: 0.875rem;
+        }
+        
+        .footer-separator {
+            color: #d1d5db;
+            margin: 0 0.5rem;
+        }
+        
+        .dark .footer-separator {
+            color: #4b5563;
+        }
     </style>
 </head>
 <body class="min-h-screen">
     <div class="container">
         <!-- Header -->
         <header class="text-center mb-8">
-            <h1 class="text-3xl font-light text-gray-800 mb-2">Tasks</h1>
+            <h1 class="text-3xl font-light text-gray-800">Tasks</h1>
             <p class="text-sm text-gray-500" id="currentDate"></p>
         </header>
 
@@ -390,13 +461,22 @@
 
         <!-- Footer -->
         <footer class="mt-8 text-center text-xs text-gray-400">
-            <p>Press <kbd class="px-2 py-1 bg-gray-200 rounded">?</kbd> for shortcuts</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-2 flex-wrap">
+                <span>Click task to complete</span>
+                <span class="footer-separator">•</span>
+                <span>Drag to reorder</span>
+                <span class="footer-separator">•</span>
+                <a href="#" class="footer-link" id="shortcutsLink" title="Keyboard shortcuts">
+                    <i class="fas fa-keyboard"></i>
+                    <span>Shortcuts</span>
+                </a>
+                <span class="footer-separator">•</span>
+                <a href="#" class="footer-link" id="darkModeToggle" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark mode</span>
+                </a>
+            </div>
         </footer>
-    </div>
-
-    <!-- Help Button -->
-    <div class="help-button" id="helpButton">
-        <i class="fas fa-question"></i>
     </div>
 
     <!-- Shortcuts Modal -->
@@ -462,11 +542,14 @@
             let currentFilter = 'all';
             let selectedTaskIndex = -1;
             let isEditing = false;
+            let sortable = null;
 
             // Dark mode
             const isDarkMode = localStorage.getItem('darkMode') === 'true';
             if (isDarkMode) {
                 $('body').addClass('dark');
+                $('#darkModeToggle i').removeClass('fa-moon').addClass('fa-sun');
+                $('#darkModeToggle span').text('Light mode');
             }
 
             // Set date
@@ -492,6 +575,30 @@
                 }, 2000);
             }
 
+            // Dark mode toggle
+            $('#darkModeToggle').on('click', function(e) {
+                e.preventDefault();
+                $('body').toggleClass('dark');
+                const isDark = $('body').hasClass('dark');
+                localStorage.setItem('darkMode', isDark);
+                
+                if (isDark) {
+                    $(this).find('i').removeClass('fa-moon').addClass('fa-sun');
+                    $(this).find('span').text('Light mode');
+                } else {
+                    $(this).find('i').removeClass('fa-sun').addClass('fa-moon');
+                    $(this).find('span').text('Dark mode');
+                }
+                
+                showHint(isDark ? 'Dark mode' : 'Light mode');
+            });
+
+            // Shortcuts link
+            $('#shortcutsLink').on('click', function(e) {
+                e.preventDefault();
+                $('#shortcutsModal').addClass('show');
+            });
+
             // Add task
             $('#taskForm').on('submit', function(e) {
                 e.preventDefault();
@@ -513,6 +620,18 @@
                     
                     $('#taskInput').val('').focus();
                 }
+            });
+
+            // Toggle completion on task click (only on clickable area)
+            $(document).on('click', '.clickable-area', function(e) {
+                // Don't toggle if clicking on delete button or during drag
+                if ($(e.target).closest('.delete-btn').length || 
+                    $(this).closest('.task-item').hasClass('dragging') || isEditing) {
+                    return;
+                }
+                
+                const checkbox = $(this).find('.task-checkbox');
+                checkbox.prop('checked', !checkbox.prop('checked')).trigger('change');
             });
 
             // Toggle completion
@@ -537,7 +656,8 @@
             });
 
             // Delete task
-            $(document).on('click', '.delete-btn', function() {
+            $(document).on('click', '.delete-btn', function(e) {
+                e.stopPropagation();
                 const id = parseInt($(this).data('id'));
                 const taskItem = $(this).closest('.task-item');
                 
@@ -563,11 +683,7 @@
                 renderTasks();
             });
 
-            // Help button and modal
-            $('#helpButton').on('click', function() {
-                $('#shortcutsModal').addClass('show');
-            });
-
+            // Close modal
             $('#closeModal').on('click', function() {
                 $('#shortcutsModal').removeClass('show');
             });
@@ -608,9 +724,7 @@
                 // Alt+D: Dark mode
                 if (e.altKey && e.keyCode === 68) {
                     e.preventDefault();
-                    $('body').toggleClass('dark');
-                    localStorage.setItem('darkMode', $('body').hasClass('dark'));
-                    showHint('Dark mode');
+                    $('#darkModeToggle').click();
                 }
                 
                 // Alt+C: Clear completed
@@ -730,6 +844,11 @@
                 
                 taskList.empty();
                 
+                // Destroy existing sortable
+                if (sortable) {
+                    sortable.destroy();
+                }
+                
                 // Filter tasks
                 let filteredTasks = tasks.filter(task => {
                     if (currentFilter === 'active' && task.completed) return false;
@@ -747,14 +866,17 @@
                     filteredTasks.forEach((task, index) => {
                         const isSelected = index === selectedTaskIndex;
                         const taskElement = $(`
-                            <div class="task-item flex items-center gap-3 p-3 rounded-lg fade-in ${isSelected ? 'task-selected' : ''}">
-                                <input 
-                                    type="checkbox" 
-                                    class="task-checkbox checkbox-custom" 
-                                    data-id="${task.id}"
-                                    ${task.completed ? 'checked' : ''}
-                                >
-                                <span class="task-text flex-1 text-gray-800 ${task.completed ? 'task-complete' : ''}">${escapeHtml(task.text)}</span>
+                            <div class="task-item flex items-center gap-3 p-3 rounded-lg fade-in ${isSelected ? 'task-selected' : ''}" data-id="${task.id}">
+                                <i class="fas fa-grip-vertical drag-handle text-gray-400"></i>
+                                <div class="clickable-area">
+                                    <input 
+                                        type="checkbox" 
+                                        class="task-checkbox checkbox-custom" 
+                                        data-id="${task.id}"
+                                        ${task.completed ? 'checked' : ''}
+                                    >
+                                    <span class="task-text flex-1 text-gray-800 ${task.completed ? 'task-complete' : ''}">${escapeHtml(task.text)}</span>
+                                </div>
                                 <button 
                                     class="delete-btn text-gray-400 hover:text-red-500 transition-colors duration-200" 
                                     data-id="${task.id}"
@@ -764,6 +886,28 @@
                             </div>
                         `);
                         taskList.append(taskElement);
+                    });
+                    
+                    // Initialize sortable
+                    sortable = new Sortable(taskList[0], {
+                        animation: 150,
+                        ghostClass: 'sortable-ghost',
+                        dragClass: 'sortable-drag',
+                        handle: '.drag-handle',
+                        onEnd: function(evt) {
+                            const taskId = parseInt($(evt.item).data('id'));
+                            const newIndex = evt.newIndex;
+                            
+                            // Remove task from current position
+                            const task = tasks.find(t => t.id === taskId);
+                            tasks = tasks.filter(t => t.id !== taskId);
+                            
+                            // Insert at new position
+                            tasks.splice(newIndex, 0, task);
+                            
+                            saveTasks();
+                            showHint('Task reordered');
+                        }
                     });
                 }
             }
