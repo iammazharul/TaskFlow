@@ -1,10 +1,3 @@
-Perfect — your app has grown into a **full-featured productivity tool** now. Based on your **latest updated code**, here is a **fully revised, GitHub-ready `README.md`** that accurately reflects all features.
-
-You can **copy–paste this directly** into your GitHub repository:
-
----
-
-````md
 # ✅ Daily Tasks – Advanced Task Manager Web App
 
 **Daily Tasks** is a modern, feature-rich, and fully responsive task management web application built using **HTML**, **Tailwind CSS**, and **JavaScript (jQuery)**.  
