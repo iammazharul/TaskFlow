@@ -1,62 +1,210 @@
-# TaskFlow Daily Tasks Web Application
+Perfect — your app has grown into a **full-featured productivity tool** now. Based on your **latest updated code**, here is a **fully revised, GitHub-ready `README.md`** that accurately reflects all features.
 
-A simple and elegant to-do list web application built with HTML, CSS (Tailwind), and JavaScript. This app allows you to keep track of your daily tasks with a clean and interactive interface. Tasks can be marked as completed, deleted, and statistics are updated in real-time.
-
-## Features
-
-* **Task Management**: Add new tasks and mark them as completed or pending.
-* **Task Animations**: Smooth animations for adding and removing tasks.
-* **Statistics**: Real-time statistics on the total, completed, and pending tasks.
-* **Persistent Storage**: Tasks are saved locally using `localStorage` so they persist across sessions.
-* **Task Removal**: Delete individual tasks or clear all completed tasks.
-* **Mobile-Friendly**: Responsive layout for a good user experience on mobile devices.
-
-## Screenshots
-
-![Screenshot](./screenshots/screenshot.png)
-
-> The above screenshot shows the main interface of the Daily Tasks web app.
-
-## Technologies Used
-
-* **HTML5**: Structure and content of the application.
-* **CSS**: TailwindCSS for modern styling and custom animations.
-* **JavaScript (jQuery)**: Functionality to add tasks, toggle completion, and manage local storage.
-* **Font Awesome**: For icons.
-
-## Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/yourusername/daily-tasks.git
-   ```
-
-2. Open the `index.html` file in your browser.
-
-   No server setup is required since this app is entirely static and runs directly in the browser.
-
-## Usage
-
-1. **Add a New Task**: Enter the task description in the input field and click the "Add" button.
-2. **Complete a Task**: Click the checkbox next to the task to mark it as completed. The task will have a strikethrough animation when completed.
-3. **Delete a Task**: Click the red "X" button next to any task to remove it.
-4. **Clear Completed Tasks**: Click the "Clear Completed" button to remove all tasks that have been marked as completed.
-5. **Task Stats**: The statistics section at the top displays the total number of tasks, how many are completed, and how many are pending.
-
-## Development
-
-Feel free to fork and improve this project. Here are some ways you can contribute:
-
-* Improve the UI/UX
-* Add new features like task categories or priority levels
-* Add notifications when tasks are due
-* Write tests for JavaScript functions
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+You can **copy–paste this directly** into your GitHub repository:
 
 ---
 
-This `README.md` includes a brief overview, features, and installation instructions. Let me know if you'd like to customize it further!
+````md
+# ✅ Daily Tasks – Advanced Task Manager Web App
+
+**Daily Tasks** is a modern, feature-rich, and fully responsive task management web application built using **HTML**, **Tailwind CSS**, and **JavaScript (jQuery)**.  
+It includes **dark mode**, **task priorities**, **categories**, **search & filters**, **progress tracking**, **keyboard shortcuts**, and **persistent local storage**.
+
+This project is perfect for personal productivity, learning UI/UX, or as a base for a SaaS task manager.
+
+---
+
+## 🚀 Live Features
+
+### ✅ Core Task Management
+- Add, edit, complete, and delete tasks
+- Persistent storage using `localStorage`
+- Real-time task updates without page reload
+
+### 🎯 Task Enhancements
+- ✅ **Priority Levels**: High, Medium, Low
+- ✅ **Categories**: Work, Personal, Health, Other
+- ✅ **Task Time Support**
+- ✅ **Inline Task Editing**
+
+### 📊 Smart Dashboard
+- Total Tasks
+- Completed Tasks
+- Pending Tasks
+- High-Priority Pending Tasks
+- Real-time **Daily Progress Bar (Completion %)**
+
+### 🔍 Advanced Filtering & Search
+- Filter by:
+  - All
+  - Active
+  - Completed
+  - High Priority
+- Filter by Category
+- Live Search by Task Name
+- Sort by:
+  - Created Time
+  - Priority
+  - Task Time
+
+### 🌙 Dark Mode
+- One-click dark mode toggle
+- Remembers user preference using `localStorage`
+
+### ⌨️ Keyboard Shortcuts
+- **Alt + N** → Focus new task input  
+- **Alt + F** → Focus search input  
+- **Alt + D** → Toggle dark mode  
+
+### 🎨 UI & UX
+- Tailwind CSS responsive design
+- Smooth animations:
+  - Task add
+  - Delete fade-out
+  - Completion strike-through
+- Priority color indicators
+- Category badges
+
+### 🔐 Security
+- Built-in **XSS protection** with safe HTML escaping
+
+---
+
+## 🖼 Screenshots
+
+```txt
+/screenshots/screenshot.png
+````
+
+> Shows dashboard, filters, progress bar, dark mode, and priority-based task layout.
+
+---
+
+## 🛠 Tech Stack
+
+| Technology          | Usage                |
+| ------------------- | -------------------- |
+| HTML5               | App structure        |
+| Tailwind CSS        | Styling & layout     |
+| JavaScript (jQuery) | Logic & DOM handling |
+| Font Awesome        | Icons                |
+| LocalStorage API    | Data persistence     |
+
+---
+
+## ⚙️ Installation
+
+No backend. No build tools. No setup hassle.
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/yourusername/daily-tasks.git
+```
+
+### 2️⃣ Open the app
+
+```bash
+cd daily-tasks
+open index.html
+```
+
+✅ Works fully offline.
+
+---
+
+## ✅ How to Use
+
+1. **Add Task**
+
+   * Enter task name
+   * Select priority, category, and time
+   * Click **Add**
+
+2. **Edit Task**
+
+   * Click edit icon ✏️
+   * Update text and press Enter
+
+3. **Complete Task**
+
+   * Click checkbox ✔
+
+4. **Delete Task**
+
+   * Click ❌ icon
+
+5. **Search & Filters**
+
+   * Search by task name
+   * Filter by:
+
+     * Status
+     * Priority
+     * Category
+
+6. **Sort Tasks**
+
+   * Click **Sort** to rotate:
+
+     * Created
+     * Priority
+     * Time
+
+7. **Clear Completed**
+
+   * Removes all completed tasks instantly
+
+8. **Dark Mode**
+
+   * Toggle using 🌙 / ☀️ or press `Alt + D`
+
+---
+
+## 📁 Project Structure
+
+```txt
+/
+├── index.html
+├── README.md
+└── screenshots/
+    └── screenshot.png
+```
+
+---
+
+## 🛣 Future Roadmap (Optional)
+
+* 🔔 Notifications & reminders
+* ☁ Cloud sync with authentication
+* 📱 PWA (Installable App)
+* 📅 Due date calendar view
+* 👥 Team task sharing
+* 💳 Subscription-based SaaS version
+
+---
+
+## 🤝 Contributing
+
+You are welcome to:
+
+* Improve UI/UX
+* Optimize animations
+* Convert to React / Vue / Flutter
+* Add backend (Firebase / Laravel / Node)
+
+Fork → Improve → Pull Request ✅
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+You are free to use, modify, and distribute it.
+
+---
+
+## 👤 Author
+
+Developed by **Mazharul Islam**
+Bangladesh 🇧🇩
