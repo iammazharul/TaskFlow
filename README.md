@@ -70,13 +70,12 @@ This project is perfect for personal productivity, learning UI/UX, or as a base 
 
 ---
 
-## 🖼 Screenshots
+## 🖼 Preview
 
-```txt
-/screenshots/screenshot.png
-````
+![Daily Tasks Preview](./screenshots/screenshot-v2.png)
 
-> Shows dashboard, filters, progress bar, dark mode, and priority-based task layout.
+> Live preview showing dark mode, filters, progress bar, priorities, and category-based tasks.
+
 
 ---
 
